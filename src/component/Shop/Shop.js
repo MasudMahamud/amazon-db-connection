@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
-import './Shop.css';
 import {addToDatabaseCart, getDatabaseCart} from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +9,7 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/products')
+        fetch('https://intense-wave-75849.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, [])
@@ -18,7 +17,7 @@ const Shop = () => {
     useEffect( ()=>{
         const saveCart = getDatabaseCart();
         const productKeys = Object.keys(saveCart);
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://intense-wave-75849.herokuapp.com/productsByKeys', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'
@@ -51,9 +50,10 @@ const Shop = () => {
     }
 
     return (
-        <div className="twin-container">
-            <div className="product-container">
-                {
+        <div className="container">
+            <div className="row">
+            <div className="col-md-10 col-sm-5 col-10" style={{display: 'contents'}}>
+            {
                     products.map(pd =><Product 
                             key={pd.key}
                             showAddToCart={true}
@@ -62,8 +62,8 @@ const Shop = () => {
                          </Product>)
                 }
             </div>
-            <div className="cart-container">
-                <Cart cart={cart}>
+               
+                <Cart className="col-md-2" cart={cart}>
                     <Link to="/review">
                       <button className="addToCartBtn">Order Review </button>
                     </Link>

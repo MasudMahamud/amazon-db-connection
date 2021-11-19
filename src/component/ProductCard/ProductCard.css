@@ -1,0 +1,15 @@
+
+
+ .addToCartBtn{
+    background-color: #FFBB0C;
+    color: rgb(7, 5, 5);
+    width: 130px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid burlywood;
+}
+.addToCartBtn:hover{
+    background-color: brown;
+    color: #ddd;
+    cursor: pointer;
+}

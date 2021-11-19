@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Product from '../Product/Product';
+import ProductDetailsCard from '../ProductDetailsCard/ProductDetailsCard';
 
 const ProductDetails = () => {
-    const {productKey} = useParams();
+    const { productKey } = useParams();
     const [product, setProduct] = useState({});
 
-    useEffect( () => {
-        fetch('http://localhost:5000/product/' + productKey)
-        .then(res => res.json())
-        .then(result=> setProduct(result))
-    },[productKey])
+    useEffect(() => {
+        fetch('https://intense-wave-75849.herokuapp.com/product/' + productKey)
+            .then(res => res.json())
+            .then(result => setProduct(result))
+    }, [productKey])
 
     return (
-        <div>
-            <h2> Product Details: </h2>
-            <Product showAddToCart={false} product={product} ></Product>
-            
+        <div className="product-details">
+            <h2 className="text-center mt-3"> Product Details: </h2>
+            <ProductDetailsCard product={product}></ProductDetailsCard>
         </div>
     );
 };

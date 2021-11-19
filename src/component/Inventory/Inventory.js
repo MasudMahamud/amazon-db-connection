@@ -5,9 +5,9 @@ import './Inventory.css';
 const Inventory = () => {
     const handleAddProduct = () => {
         const product = {};
-        fetch('http://localhost:5000/addProduct',{
+        fetch('http://https://intense-wave-75849.herokuapp.com/addProduct', {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(product)
@@ -22,9 +22,9 @@ const Inventory = () => {
                 <p><span>Quantity: </span><input type="text" /></p>
                 <p><span>Upload Image: </span><input type="file" /></p>
 
-              <button onClick={handleAddProduct}>Add product</button>
+                <button onClick={handleAddProduct}>Add product</button>
             </form>
-            
+
         </div>
     );
 };

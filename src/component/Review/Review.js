@@ -3,7 +3,6 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import orderImages from '../../images/giphy.gif';
-import './Review.css'
 import { useHistory } from 'react-router-dom';
 
 
@@ -31,16 +30,16 @@ const Review = () => {
         const saveCart = getDatabaseCart();
         const productKeys = Object.keys(saveCart);
 
-        fetch('http://localhost:5000/productsByKeys', {
+        fetch('https://intense-wave-75849.herokuapp.com/productsByKeys', {
             method: 'POST',
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(productKeys)
         })
-        .then( res => res.json())
-        .then(data => setCart(data))
-        }, []);
+            .then(res => res.json())
+            .then(data => setCart(data))
+    }, []);
 
     let thankyou;
     if (orderPlaced) {
@@ -48,26 +47,31 @@ const Review = () => {
     }
 
     return (
-        <div className="twin-container">
-            <div className="product-container">
-                {
-                    cart.map(pd =>
-                        <ReviewItem
-                            key={pd.key}
-                            handleRemoveProduct={handleRemoveProduct}
-                            product={pd} >
-                        </ReviewItem>)
-                }
-                {thankyou}
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6 col-sm-8 col-6">
+                    {
+                        cart.map(pd =>
+                            <ReviewItem
+                                key={pd.key}
+                                handleRemoveProduct={handleRemoveProduct}
+                                product={pd} >
+                            </ReviewItem>)
+                    }
+                    {thankyou}
+                </div>
+                <div className="col-md-2 col-sm-2 col-3">
+                    <Cart cart={cart}>
+                        <button onClick={handleProceedCheckout} className="addToCartBtn my-4">
+                            Proceed Checkout
+                        </button>
+                    </Cart>
+                </div>
             </div>
 
-            <div className="cart-container">
-                <Cart cart={cart}>
-                    <button onClick={handleProceedCheckout} className="addToCartBtn">
-                        Proceed Checkout
-                    </button>
-                </Cart>
-            </div>
+
+
+
         </div>
     );
 };

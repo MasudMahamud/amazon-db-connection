@@ -1,27 +1,28 @@
 import React from 'react';
-import './ReviewItem.css';
+import { Button, Card } from 'react-bootstrap';
+
 
 const ReviewItem = (props) => {
-    //console.log(props);
-    const {name, quantity, key, price,img} = props.product;
-    return (
-        <div className="review">
-            <div className="product-details">
-                <img src={img} alt="" />
-            <h4 >{name} </h4>
-            <p className="quantity"> Quantity: {quantity} </p>
-            <p>price: {price} </p>
-             <br />
+    const { name, quantity, key, price, img } = props.product;
 
-             <button 
-                className="addToCartBtn" 
-                 onClick={()=> props.handleRemoveProduct(key)} >
-                  
-                 Remove
-            </button>
-            </div>
-            
-        </div>
+    return (
+        <Card style={{ width: '100%', }}>
+            <Card.Img variant="top" src={img} style={{width:'120px'}} />
+            <Card.Body>
+
+                <Card.Text>
+                    <h4 >{name} </h4>
+                    <p className="quantity"> Quantity: {quantity} </p>
+                    <p>price: {price} </p>
+                </Card.Text>
+
+                <Button
+                    className="addToCartBtn "
+                    onClick={() => props.handleRemoveProduct(key)} >
+                    Remove
+                </Button>
+            </Card.Body>
+        </Card>
     );
 };
 

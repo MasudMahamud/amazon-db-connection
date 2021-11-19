@@ -22,10 +22,7 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
-        
-       
         <Header></Header>
-          
         <Switch>
           <Route path="/shop">
             <Shop></Shop>
