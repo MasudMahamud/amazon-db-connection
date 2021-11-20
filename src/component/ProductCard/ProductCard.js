@@ -10,9 +10,9 @@ const ProductCard = (props) => {
 
     return (
         <Card style={{ width: '18rem', }} className="m-3 d-flex">
-            <Card.Img variant="top" src={img} rounded />
+            <Card.Img variant="top" src={img} style={{ width: '60%' }} />
             <Card.Body>
-                <Card.Title><h4> <Link to={"/product/" + key} style={{textDecoration: 'none'}}> {name} </Link> </h4></Card.Title>
+                <Card.Title><h4> <Link to={"/product/" + key} style={{ textDecoration: 'none' }}> {name} </Link> </h4></Card.Title>
                 <Card.Text>
                     <p className="text-secondary mt-2">By: {seller} </p>
                     <strong className="text-danger"> Price: ${price} </strong> <br /> <br />

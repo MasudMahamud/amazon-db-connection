@@ -26,7 +26,7 @@ const Cart = (props) => {
                 <span>Main Price: ${(total).toFixed(2)}</span> <br />
                 <span>Shipping: ${shipping}</span> <br />
                 <span>Tax/VAT : ${tax}</span> <br /><br />
-                <span className="text-primary mb-5">Total Price: ${grandTotal}</span>
+                <strong className="text-primary mb-5">Total Price: ${grandTotal}</strong><br /><br />
 
                 {
                     props.children

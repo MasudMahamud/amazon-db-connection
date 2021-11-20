@@ -10,6 +10,7 @@ import { createUserEmailAndPassword, handleFacebookSignIn, handleGoogleSignIn, i
 initializeLoginFramework();
 
 function Login() {
+  document.title = 'login';
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignIn: false,
