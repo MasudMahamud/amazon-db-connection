@@ -7,11 +7,11 @@ const ProductDetailsCard = (props) => {
 
     return (
         <Card className="mt-5" style={{ width: '100%', textAlign: 'center' }}>
-            <Card.Img variant="top" src={img} style={{ width: '250px', margin: 'auto' }} />
+            <Card.Img variant="top" src={img} style={{ width: '220px', margin: 'auto' }} />
             <Card.Body>
 
                 <Card.Text>
-                    <h3 >{name} </h3>
+                    <h3 style={{fontSize:'14px',color:'tomato'}}>{name} </h3>
                     <p>price: {price} </p>
                 </Card.Text>
                 <Button variant="warning" className="mb-4"><Link to="/shop" style={{ textDecoration: 'none' }}>Back</Link></Button>

@@ -4,6 +4,7 @@ import { UserContext } from '../../App';
 import { useContext } from 'react';
 import './Header.css';
 
+
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 

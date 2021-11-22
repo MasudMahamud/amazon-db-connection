@@ -10,13 +10,15 @@ import { Button } from 'react-bootstrap';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    document.title='shop';
+    const [searchBlur, setSearchBlur] = useState('');
+    const [search, setSearch] = useState('');
+    document.title = 'shop';
 
     useEffect(() => {
-        fetch('https://intense-wave-75849.herokuapp.com/products')
+        fetch('https://intense-wave-75849.herokuapp.com/products?search=' + search)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [search])
 
     useEffect(() => {
         const saveCart = getDatabaseCart();
@@ -53,9 +55,22 @@ const Shop = () => {
         addToDatabaseCart(product.key, count);
     }
 
+    const handleBlur = e => {
+        setSearchBlur(e.target.value);
+    }
+    const handleSearch = () => {
+        setSearch(searchBlur);
+    }
+
     return (
         <div className="container">
-            <div className="row">
+            <div className="text-secondary text-center " style={{ position: 'fixed', top: '10%', zIndex: '1', left: '4%', right: '15%' }} >
+                <h5 className="mb-3">Find Your Product</h5>
+                <input type="text" onBlur={handleBlur} placeholder="search" style={{ width: '150px', height: 'fit-Content', padding: '5px' }} />
+                <input type="submit" value="click" onClick={handleSearch} style={{ width: '80px', height: 'fit-Content', padding: '5px' }} />
+            </div >
+
+            <div className="row" style={{ marginTop: '95px' }}>
                 <div className="col-md-10 col-sm-5 col-10" style={{ display: 'contents' }}>
                     {
                         products.length === 0 &&
@@ -75,7 +90,7 @@ const Shop = () => {
 
                 <Cart className="col-md-2" cart={cart}>
                     <Link to="/review">
-                        <Button className="addToCartBtn">Review</Button>
+                        <Button className="addToCartBtn">Review -- </Button>
                     </Link>
                 </Cart>
             </div>
